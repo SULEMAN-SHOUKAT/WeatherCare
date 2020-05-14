@@ -148,7 +148,7 @@ componentDidMount(){
 					</div>
           <div className="copyright mb-4">
 						Developed by <a href='https://suleman-shoukat.github.io/Myportfolio/' target="_blank">Suleman Shoukat</a>
-            <div><a href='https://drive.google.com/open?id=15diD8koJVU4qrNaPr6CJVOYKNWWHumv8' target="_blank">Get our Android App for free</a></div>
+            <div><a href='https://drive.google.com/file/d/15jbCWc9K3SM3FzoocQjS0ZPEpjL8eoKU/view' target="_blank">Get our Android App for free</a></div>
 					</div>  
           
             </div>
