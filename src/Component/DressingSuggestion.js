@@ -33,11 +33,15 @@ export class DressingSuggestion extends Component {
 	getDressingSuggestions=(MaxTemp,MinTemp)=>{
     this.setState({datagethered:null})
     var _MinTemp=MinTemp;
-    var _MaxTemp=MaxTemp
+    var _MaxTemp=MaxTemp;
+    console.log('before if '+_MaxTemp,_MinTemp);
+    
 		if((MinTemp==MaxTemp) ||(MinTemp-MaxTemp<6)){
-      _MaxTemp=MaxTemp+5;
-				 _MinTemp=MinTemp-5;
-		}
+      _MaxTemp=parseInt( MaxTemp) +5;
+				 _MinTemp=parseInt( _MinTemp)-5;
+    }
+    console.log('just before fetch'+_MaxTemp,_MinTemp);
+    
         fetch(`https://weather-care.herokuapp.com/Dressing?MinTemp=${_MinTemp}&MaxTemp=${_MaxTemp}`)
          .then(Response=>Response.json())
          .then( async myjson=>{

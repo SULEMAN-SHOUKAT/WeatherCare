@@ -33,6 +33,8 @@ export class DiseasePerdiction extends Component {
         if(Humidity<40&&MaxTemp>=30&&MinTemp>=30){
             Humidity=40;
           }
+          console.log('humidity after if '+Humidity);
+          
         fetch(`https://weather-care.herokuapp.com/Prediction?MinTemp=${MinTemp}&MaxTemp=${MaxTemp}&WindSpeed=${WindSpeed}&Humidity=${Humidity}`)
          .then(Response=>Response.json())
          .then(myjson=>{
