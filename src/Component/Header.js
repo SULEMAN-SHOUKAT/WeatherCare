@@ -52,7 +52,7 @@ export class Header extends Component {
 						<div>
 							<img src={disease_prediction} className='logo'alt="Disease Perdiction Logo" />
 							<h3>Disease Prediction</h3>
-							<p>Perdict chances of accurance of current diseases</p>
+							<p>Perdict chances of occurance of current diseases</p>
 							<p>and give precautions to prevent them.</p>
 						</div>
 
