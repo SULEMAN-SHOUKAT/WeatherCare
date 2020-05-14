@@ -185,7 +185,7 @@ ShowDiseases=()=>{
               <div className="card-body">
                 <div className="row no-gutters align-items-center">
                   <div className="col mr-2">
-                    <div className=" h5 text-xl font-weight-bold  text-uppercase mb-1 ml-2" style={{color:`${this.graphcolor(parseInt(this.state.results.Dangueprobability)*10)}`}}>Dangue</div>
+                    <div className=" h5 text-xl font-weight-bold  text-uppercase mb-1 ml-2" style={{color:`${this.graphcolor(parseInt(this.state.results.Dangueprobability)*10)}`}}>Dengue</div>
                     <div className="row no-gutters align-items-center">
                       <div className="col-auto">
                         <div className="h5 mb-0 mr-3 font-weight-bold text-gray-800">{parseInt(this.state.results.Dangueprobability)*10}%</div>

@@ -264,7 +264,7 @@ else{
                                             </Card.Body>
                                           </Card>
                                           <br />
-                                     <button className="button"onClick={()=> this.setState({Precaution:`${this.state.results[0].weather}`})}>Discription</button>
+                                     <button className="button"onClick={()=> this.setState({Precaution:`${this.state.results[0].weather}`})}>Description</button>
                                      </div>
                                      </div>
 									 

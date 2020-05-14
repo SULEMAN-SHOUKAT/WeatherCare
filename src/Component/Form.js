@@ -51,6 +51,8 @@ export class Form extends Component {
                 this.setState({MinTempWarning:'be realistic only (-60 to 60)°C Temperature accepted'})
                 
             }
+
+          
         }
         if(event.target.name==='Humidity'){
             this.setState({Humidity: event.target.value});
@@ -90,8 +92,8 @@ export class Form extends Component {
                 
                 
              }
-             else if(parseInt(this.state.MaxTemp)    <= parseInt(this.state.MinTemp)  ){
-                this.setState({FormError:"Please fill all the feilds as required you give minimum temperature value greater then or equal  to the maximum temperature value please correct them"})        
+             else if(parseInt(this.state.MaxTemp)    < parseInt(this.state.MinTemp)  ){
+                this.setState({FormError:"Please fill all the feilds as required you give minimum temperature value greater then  the maximum temperature value please correct them"})        
                 this.setState({FormModalShow:true}) 
                 this.setState({ManualPerdiction:false})
              }
@@ -165,7 +167,7 @@ setFormView=()=>{
             <footer id="footer">
 				<div className="inner">
 
-					<h3>Menual Perdiction</h3>
+					<h3>Manual Perdiction</h3>
                     <form onSubmit={(e)=>e.preventDefault()}>
 						<div className="field half first">
 							<label htmlFor="name">Maximum Temperature of day in °C</label>
