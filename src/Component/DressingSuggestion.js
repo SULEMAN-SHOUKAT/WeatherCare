@@ -67,7 +67,7 @@ export class DressingSuggestion extends Component {
 
    PerdictionMaking=()=>{
 	return (<div>
-				<h3>Generating Disease Prediction</h3>
+				<h3>Generating Dressing Suggestions</h3>
 				  <Levels  size='25px'/>
 			</div>)
  }
