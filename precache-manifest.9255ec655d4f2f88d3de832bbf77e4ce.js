@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b509a60ccf506e4787e0691c7a6b193c",
+    "revision": "29c0cbdc04ce3184df97c9d10841d154",
     "url": "/WeatherCare/index.html"
   },
   {
-    "revision": "7d22c6306baaa041b4aa",
-    "url": "/WeatherCare/static/css/2.8e21cc76.chunk.css"
+    "revision": "f6c7aa378e3bdddc092a",
+    "url": "/WeatherCare/static/css/2.e0be48e3.chunk.css"
   },
   {
-    "revision": "38d10cab495e0f5276f5",
-    "url": "/WeatherCare/static/css/main.8bcb597f.chunk.css"
+    "revision": "40c209805382b64e6a86",
+    "url": "/WeatherCare/static/css/main.34bd0dc4.chunk.css"
   },
   {
-    "revision": "7d22c6306baaa041b4aa",
-    "url": "/WeatherCare/static/js/2.37b6b7f2.chunk.js"
+    "revision": "f6c7aa378e3bdddc092a",
+    "url": "/WeatherCare/static/js/2.c91f7fe7.chunk.js"
   },
   {
     "revision": "2953c278e691ba5d28058fd9a2622eb4",
-    "url": "/WeatherCare/static/js/2.37b6b7f2.chunk.js.LICENSE.txt"
+    "url": "/WeatherCare/static/js/2.c91f7fe7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "38d10cab495e0f5276f5",
-    "url": "/WeatherCare/static/js/main.9b519eed.chunk.js"
+    "revision": "40c209805382b64e6a86",
+    "url": "/WeatherCare/static/js/main.9b2e1c53.chunk.js"
   },
   {
     "revision": "a0ff9a9cf43bf3a3ba8e",
@@ -32,8 +32,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/WeatherCare/static/media/about_bg.7058ffd7.png"
   },
   {
-    "revision": "4950c7af4b29c2e2b3e71afecfa9c9b1",
-    "url": "/WeatherCare/static/media/banner_bg.4950c7af.png"
+    "revision": "250f1c28dd9daafeb0b76df1cdfa3d8d",
+    "url": "/WeatherCare/static/media/banner_bg.250f1c28.png"
   },
   {
     "revision": "5caf8dc477d78f3520adf8687eb2b84a",
@@ -58,6 +58,18 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "e6cf7c6ec7c2d6f670ae9d762604cb0b",
     "url": "/WeatherCare/static/media/fontawesome-webfont.e6cf7c6e.woff2"
+  },
+  {
+    "revision": "04eb8fc57f27498e5ae37523e3bfb2c7",
+    "url": "/WeatherCare/static/media/revicons.04eb8fc5.woff"
+  },
+  {
+    "revision": "17629a5dfe0d3c3946cf401e1895f091",
+    "url": "/WeatherCare/static/media/revicons.17629a5d.ttf"
+  },
+  {
+    "revision": "2feb69ccb596730c72920c6ba3e37ef8",
+    "url": "/WeatherCare/static/media/revicons.2feb69cc.eot"
   },
   {
     "revision": "cfaae874b8620bc6213215cf6eb0eacc",
