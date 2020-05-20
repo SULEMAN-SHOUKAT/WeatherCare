@@ -94,7 +94,7 @@ export class Header extends Component {
 			Developed by <a href='https://suleman-shoukat.github.io/Myportfolio/' target="_blank">Suleman Shoukat</a>
 			
 					</div>  
-					<a href='https://drive.google.com/file/d/15jbCWc9K3SM3FzoocQjS0ZPEpjL8eoKU/view' target="_blank">Get our Android App for free</a>
+					<a href='https://drive.google.com/open?id=1J3WK88EeLjgDYdllY4mBjfIx92XtFwXu' target="_blank">Get our Android App for free</a>
 					</div>
 					:null}
 				
