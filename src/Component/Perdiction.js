@@ -3,10 +3,14 @@ import   dressing_suggestions from './images/dressing_suggestions.png';
 import DiseasePerdiction from './DiseasePerdiction.js'
 import './assets/css/main.css';
 import DressingSuggestion from './DressingSuggestion';
+import Medicine from './MedicenTrend';
 import { render } from 'react-dom';
 import { Dots } from 'react-activity';
 import 'react-activity/dist/react-activity.css';
 import {Alert} from 'react-bootstrap'
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 export class Perdiction extends Component {
 constructor(props) {
     super(props)
@@ -16,7 +20,12 @@ constructor(props) {
         MinTemp:null,
         Humidity:null,
         WindSpeed:null,
+        Week_MinTemp:null,
+        Week_MaxTemp:null,
+        Week_Humidity:null,
+        Week_WindSpeed:null,
         datagethered:false,
+        FutureDatagethered:false,
         Error:null,
         showError:false,
         Temp:null,
@@ -27,7 +36,25 @@ constructor(props) {
    this.GetWeatherData=this.GetWeatherData.bind(this);
 this.AlertDismissibleExample=this.AlertDismissibleExample.bind(this);
 
+
 }
+responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3 // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2 // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1.
+  }
+};
 
 HandelManualPerdiction(MaxTemp,MinTemp,Humidity,WindSpeed){
  this.setState({MaxTemp:MaxTemp})
@@ -35,6 +62,11 @@ HandelManualPerdiction(MaxTemp,MinTemp,Humidity,WindSpeed){
  this.setState({Humidity:Humidity})
  this.setState({WindSpeed:WindSpeed})
  this.setState({Temp:(parseInt(MaxTemp)+parseInt(MinTemp))/2})
+ this.setState({Week_MaxTemp:MaxTemp})
+ this.setState({Week_MinTemp:MinTemp})
+ this.setState({Week_Humidity:Humidity})
+ this.setState({Week_WindSpeed:WindSpeed})
+ this.setState({FutureDatagethered:true})
  console.log("this is temp " +this.state.Temp);
  
  this.setState({datagethered:true})
@@ -48,7 +80,7 @@ getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.GetWeatherData);
     } else { 
-      this.setState({Error:'We are sorry there is an error while getting your Location Please allow Location ecess or try again by reloading'})
+      this.setState({Error:'We are sorry there is an error while getting your Location Please allow Location access or try again by reloading'})
       this.setState({showError:true})
     }
   }
@@ -58,28 +90,72 @@ getLocation() {
    var Lat=position.coords.latitude
    var Lang=position.coords.longitude
    if(Lat==null||Lang==null){
-    this.setState({Error:'We are sorry there is an error while getting your Location Please allow Location ecess or try again by reloading'})
+    this.setState({Error:'We are sorry there is an error while getting your Location Please allow Location access or try again by reloading'})
     this.setState({showError:true})
    }
    else{
-     this.setState({Location:`${Lat} and ${Lang}`})
+     
       fetch(`https://api.openweathermap.org/data/2.5/weather?&lat=${Lat}&lon=${Lang}&units=metric&appid=d4a3ad358199cfea3aece95f5afc4d42`)
       .then(response=>response.json())
       .then(myjson=>{
-        this.setState({MaxTemp:Number((myjson.main.temp_max).toFixed())})
-        this.setState({MinTemp:Number((myjson.main.temp_min).toFixed())})
-        this.setState({Humidity:Number((myjson.main.humidity).toFixed())})
-        this.setState({WindSpeed:Number((myjson.wind.speed).toFixed())})
-        this.setState({Temp:Number((myjson.main.temp).toFixed())})
+        console.log('wether result ',myjson.main.temp_max);
+        this.setState({MaxTemp:parseInt(myjson.main.temp_max)})
+        this.setState({MinTemp:parseInt(myjson.main.temp_min)})
+        this.setState({Humidity:parseInt(myjson.main.humidity)})
+        this.setState({WindSpeed:parseInt(myjson.wind.speed)})
+        this.setState({Temp:parseInt(myjson.main.temp)})
         this.setState({datagethered:true})
+       
+      }).then(data=>{
+        this.GetFutureWeatherData(position)
       })
       .catch(error=>{
-        this.setState({Error:'We are sorry there is an error while getting Weather Data try again by reloading'})
+        this.setState({Error:'We are sorry there is an error while getting current Weather Data try again by reloading'})
         this.setState({showError:true})
       })
    }
   }
 
+
+  GetFutureWeatherData=(position) =>{
+    var Lat=position.coords.latitude
+   var Lang=position.coords.longitude
+    console.log(Lat,Lang);
+    
+    if(Lat==null||Lang==null){
+     this.setState({Error:'We are sorry there is an error while getting your Location Please allow Location access or try again by reloading'})
+     this.setState({showError:true})
+    }
+    else{
+      
+       fetch(`https://api.openweathermap.org/data/2.5/onecall?&lat=${Lat}&lon=${Lang}&exclude=current,minutely,hourly&units=metric&appid=d4a3ad358199cfea3aece95f5afc4d42`)
+       .then(response=>response.json())
+       .then(myjson=>{
+         //7 days weather implementation.................
+         var Sum_Week_MinTemp=0;
+         var Sum_Week_MaxTemp=0;
+         var Sum_Week_Humidity=0;
+         var Sum_Week_WindSpeed=0;
+         for(var i=0;i<8;i++){
+           Sum_Week_MinTemp=Sum_Week_MinTemp+parseInt(myjson.daily[i].temp.min)
+           Sum_Week_MaxTemp=Sum_Week_MaxTemp+parseInt(myjson.daily[i].temp.max)
+           Sum_Week_Humidity=Sum_Week_Humidity+parseInt(myjson.daily[i].humidity)
+           Sum_Week_WindSpeed=Sum_Week_WindSpeed+parseInt(myjson.daily[i].wind_speed)
+         }
+         this.setState({Week_MaxTemp:parseInt( parseInt(Sum_Week_MaxTemp)/8)})
+         this.setState({Week_MinTemp:parseInt( parseInt(Sum_Week_MinTemp)/8)})
+         this.setState({Week_Humidity:parseInt( parseInt(Sum_Week_Humidity)/8)})
+         this.setState({Week_WindSpeed:parseInt( parseInt(Sum_Week_WindSpeed)/8)})
+         console.log('send it to fetch',this.state.Week_Humidity,this.state.Week_MaxTemp);
+         
+         this.setState({FutureDatagethered:true})
+       })
+       .catch(error=>{
+         this.setState({Error:'We are sorry there is an error while getting Future Weather Data try again by reloading'})
+         this.setState({showError:true})
+       })
+    }
+   }
 
 
 componentDidMount(){
@@ -110,6 +186,8 @@ componentDidMount(){
   }
 
     render() {
+   
+    
       
         return (
             <div>
@@ -118,13 +196,19 @@ componentDidMount(){
 				<div className="inner"  >
          
                     {this.state.showError==true? <this.AlertDismissibleExample />:
+                    <div>
 					<div className="flex flex-2" style={{justifyContent:'space-arround'}}>
+            
                         {this.state.datagethered==true?  <DiseasePerdiction MaxTemp={this.state.MaxTemp} MinTemp={this.state.MinTemp} Humidity={this.state.Humidity} WindSpeed={this.state.WindSpeed}/> :<article><h3>Loading Disease Prediction</h3> <Dots  size='25px'/><p>Please wait while we getting weather data</p></article>}
 
                         {this.state.datagethered==true? <DressingSuggestion Temp={this.state.Temp}  MaxTemp={this.state.MaxTemp} MinTemp={this.state.MinTemp} Humidity={this.state.Humidity} /> :<article>  <h3>Loading Dressing suggestions</h3> <Dots size='25px'/><p>Please wait while we getting weather data</p></article>}
-						
-						
+                       
 					</div>
+           <div className="flex flex-1" style={{justifyContent:'center',alignItems:'center'}}>
+           {this.state.FutureDatagethered==true? <Medicine style={{alignSelf:'center'}} Week_Humidity={this.state.Week_Humidity} Week_MaxTemp={this.state.Week_MaxTemp} Week_MinTemp={this.state.Week_MinTemp} Week_WindSpeed={this.state.Week_WindSpeed}  MaxTemp={this.state.MaxTemp} MinTemp={this.state.MinTemp} Humidity={this.state.Humidity} WindSpeed={this.state.WindSpeed} /> :<article>  <h3>Loading Medicine Trends</h3> <Dots size='25px'/><p>Please wait while we getting weather data</p></article>}
+          </div>
+          </div>
+         
                            }
 				</div>
                 

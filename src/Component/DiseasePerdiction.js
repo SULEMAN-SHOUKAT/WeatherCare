@@ -269,9 +269,13 @@ ShowDiseases=()=>{
                             {this.state.showError==true? <this.AlertDismissibleExample />:
                                    this.state.datagethered==false? this.PerdictionMaking():
                                    this.state.Precaution!=null? this.ShowPrecautions():
+                                   <>
                                     <this.ShowDiseases/>
+                                    <button onClick={()=>{this.getDiseasePerdiction( this.state.MaxTemp, this.state.MinTemp, this.state.Humidity, this.state.WindSpeed);this.setState({showError:false});this.setState({Error:null})}} className="button">Reload</button>
+           </>
                                     }
-                              
+                       
+                      
 			</article>
             
         )

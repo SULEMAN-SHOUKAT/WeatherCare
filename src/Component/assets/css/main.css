@@ -2783,9 +2783,34 @@
 		.Precation-boundary::-webkit-scrollbar { width: 0 !important }
 		.Precation-boundary { overflow: -moz-scrollbars-none; }
 		.Precation-boundary { -ms-overflow-style: none; }
+
+		.image-boundary{
+			max-width:65vh;
+			max-height:65vh;
+			margin-bottom: 1rem;
+			border-radius: 3rem;
+			display: flex;
+			flex-direction: row !important; 
+			background-image: url(../../images/about_bg.png);
+			overflow-x: scroll;
+			overflow-y: hidden;
+		}
+		.image-boundary::-webkit-scrollbar { width: 0 !important }
+		.image-boundary::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 0px rgba(78, 221, 231, 0.3);
+		}
+		.image-boundary::-webkit-scrollbar-thumb {
+			background-color:rgba(78, 221, 231, 0.2);
+			outline: 0px solid rgba(78, 221, 231, 0);
+		  }
+	
 		.Image_height{
 			height: 290px;
 			width: 150px;
+		}
+		.Image_height2{
+			height: 400px;
+			width: 300px;
 		}
 		
 @media screen and (max-width:425px) {
@@ -2802,6 +2827,18 @@
 	.Precation-boundary{
 		max-height: 55vh;
 	}
+	.image-boundary{
+		max-width: 48vh;
+		max-height: 61vh;
+	}
+	.Image_height2{
+		height: 300px;
+		width: 200px;
+	}
+	.image-boundary::-webkit-scrollbar-thumb {
+		background-color:rgba(78, 221, 231, 0);
+		outline: 0px solid rgba(78, 221, 231, 0);
+	  }
 }
 
 @media screen and (max-width:768px) and (min-width:425px)  {
@@ -2815,6 +2852,18 @@
 		width: 6rem;
 		margin-top:-1rem;
 	}
+	.image-boundary{
+		max-width: 121vh;
+		max-height: 82vh;
+	}
+	.Image_height2{
+		height: 400px;
+		width: 300px;
+	}
+	.image-boundary::-webkit-scrollbar-thumb {
+		background-color:rgba(78, 221, 231, 0);
+		outline: 0px solid rgba(78, 221, 231, 0);
+	  }
 	
 }
 @media screen and (max-width:1024px) and (min-width:769px)  {
@@ -2823,9 +2872,18 @@
 		width: 9rem;
 		margin-top:-1rem;
 	}
+	.image-boundary{
+		max-width: 121vh;
+		max-height: 82vh;
+	}
+	.Image_height2{
+		height: 400px;
+		width: 300px;
+	}
 	
 	
 }
+
 @media screen and (max-width:1024px) and (min-width:768px)  {
 
 	.Card_column{

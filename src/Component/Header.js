@@ -3,6 +3,7 @@ import './assets/css/main.css';
 import logo from './images/splash.png';
 import disease_prediction from './images/disease_prediction.png'
 import dressing_suggestions from './images/dressing_suggestions.png'
+import MedicineTrend from './images/medicen_trend.png'
 import Perdiction from './Perdiction.js'
 import Form from './Form.js'
 import { Link,Scroll } from "react-scroll";
@@ -52,15 +53,24 @@ export class Header extends Component {
 						<div>
 							<img src={disease_prediction} className='logo'alt="Disease Perdiction Logo" />
 							<h3>Disease Prediction</h3>
-							<p>Perdict chances of occurance of current diseases</p>
-							<p>and give precautions to prevent them.</p>
+							<p>Perdict chances of current diseases</p>
+							<p>and give some precautions.</p>
+							
 						</div>
 
 						<div>
 							<img src={dressing_suggestions} className='logo'alt="Disease Perdiction Logo" />
 							<h3>Dressing Suggestion</h3>
-							<p>Suggest appropriate dressing according to weather</p>
-							<p>and give some extra details on suggestion.</p>
+							<p>Suggest dressing according to weather</p>
+							<p>and give some detail on suggestions.</p>
+						</div>
+						<div>
+							<img src={MedicineTrend} className='logo'alt="Disease Perdiction Logo" />
+							<h3>Medicine Trend</h3>
+							<p>Suggest medicine that may be</p>
+							<p>required in current situation</p>
+							<p>or my be in near future</p>
+							
 						</div>
 
 

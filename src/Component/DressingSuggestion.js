@@ -269,6 +269,8 @@ else{
                                           </Card>
                                           <br />
                                      <button className="button"onClick={()=> this.setState({Precaution:`${this.state.results[0].weather}`})}>Description</button>
+                                     <button onClick={()=>{this.getDressingSuggestions( this.state.MaxTemp, this.state.MinTemp);this.setState({showError:false});this.setState({Error:null})}} className="button">Reload</button>
+           
                                      </div>
                                      </div>
 									 
