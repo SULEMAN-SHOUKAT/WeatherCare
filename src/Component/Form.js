@@ -185,8 +185,8 @@ setFormView=()=>{
                             <label htmlFor="name" style={{color:`red`}}>{this.state.HumidityWarning}</label>
                         </div>
 						<div className="field half">
-							<label htmlFor="email">Wind Speed of day in mph (miles per hour)</label>
-							<input name="WindSpeed" type="number" id="WindSpeed" maxLength='3'  onChange={this.handleFormChange}  placeholder="Give Wind speed in between (0 to 100)mph"/>
+							<label htmlFor="email">Wind Speed of day in meter/sec</label>
+							<input name="WindSpeed" type="number" id="WindSpeed" maxLength='3'  onChange={this.handleFormChange}  placeholder="Give Wind speed in between (0 to 100)meter/sec"/>
                             <label htmlFor="name" style={{color:`red`}}>{this.state.WindspeedWarning}</label>
                         </div>
 						<ul className="actions">

@@ -95,15 +95,15 @@ getLocation() {
    }
    else{
      
-      fetch(`https://api.openweathermap.org/data/2.5/weather?&lat=${Lat}&lon=${Lang}&units=metric&appid=d4a3ad358199cfea3aece95f5afc4d42`)
+      fetch(`https://api.openweathermap.org/data/2.5/onecall?&lat=${Lat}&lon=${Lang}&exclude=current,minutely,hourly&units=metric&appid=d4a3ad358199cfea3aece95f5afc4d42`)
       .then(response=>response.json())
       .then(myjson=>{
-        console.log('wether result ',myjson.main.temp_max);
-        this.setState({MaxTemp:parseInt(myjson.main.temp_max)})
-        this.setState({MinTemp:parseInt(myjson.main.temp_min)})
-        this.setState({Humidity:parseInt(myjson.main.humidity)})
-        this.setState({WindSpeed:parseInt(myjson.wind.speed)})
-        this.setState({Temp:parseInt(myjson.main.temp)})
+        console.log('wether result of one week ',myjson.daily[0].temp.max);
+        this.setState({MaxTemp:parseInt(myjson.daily[0].temp.max)})
+        this.setState({MinTemp:parseInt(myjson.daily[0].temp.min)})
+        this.setState({Humidity:parseInt(myjson.daily[0].humidity)})
+        this.setState({WindSpeed:parseInt(myjson.daily[0].wind_speed)})
+        this.setState({Temp:parseInt((myjson.daily[0].temp.max + myjson.daily[0].temp.min)/2)})
         this.setState({datagethered:true})
        
       }).then(data=>{

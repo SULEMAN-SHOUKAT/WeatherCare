@@ -101,7 +101,7 @@ export class Medicine extends Component {
    }
 
    PerdictionMaking=()=>{
-	return (<div style={{marginTop:'6rem'}}>
+	return (<div style={{marginTop:'1rem'}}>
 				<h3>Generating Medicine Trends</h3>
 				  <Levels  size='25px'/>
 			</div>)
